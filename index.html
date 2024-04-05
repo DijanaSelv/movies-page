@@ -63,7 +63,7 @@
         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#add-movie-modal">+ New Movie</button>
       </div>
     </nav>
-    <div class="container">
+    <div class="container container-main">
     <div class="modal modal-dark" id="add-movie-modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -75,6 +75,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="div-quote d-flex flex-column align-items-center">
+      <p class="p-quote text-light">Fetching Quote</p>
+      <p class="p-author text-light"></p>
+      <div class="spinner-border loading-quote text-warning" role="status">
+      </div>
     </div>
       <div class="row movies-row g-3 ">
         <div class="card" >
