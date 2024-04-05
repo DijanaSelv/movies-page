@@ -1,5 +1,6 @@
 const movies = [
   // Action
+
   {
     title: "The Dark Knight",
     year: "2008",
@@ -17,7 +18,7 @@ const movies = [
     year: "2015",
     genre: "Action",
     description:
-      "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+      "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler with the aid of a drifter named Max.",
     director: "George Miller",
     rating: "8.1",
     duration: "2h",
@@ -79,7 +80,7 @@ const movies = [
     year: "1994",
     genre: "Drama",
     description:
-      "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+      "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
     director: "Robert Zemeckis",
     rating: "8.8",
     duration: "2h 22m",
@@ -98,18 +99,7 @@ const movies = [
     poster:
       "https://media-cache.cinematerial.com/p/500x/1suyyfwy/the-godfather-movie-poster.jpg?v=1456733600",
   },
-  {
-    title: "Schindler's List",
-    year: "1993",
-    genre: "Drama",
-    description:
-      "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-    director: "Steven Spielberg",
-    rating: "8.9",
-    duration: "3h 15m",
-    poster:
-      "https://media-cache.cinematerial.com/p/500x/qbsdx7kq/schindlers-list-movie-poster.jpg?v=1456259195",
-  },
+
   {
     title: "The Green Mile",
     year: "1999",
@@ -124,6 +114,18 @@ const movies = [
   },
 
   // Sci-Fi
+  {
+    title: "Dune: Part Two",
+    year: "2024",
+    genre: "Sci-Fi",
+    description:
+      "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+    director: "Denis Villeneuve",
+    rating: "8.8",
+    duration: "2h 46m",
+    poster:
+      "https://media-cache.cinematerial.com/p/500x/llixelmk/dune-part-two-movie-poster.jpg?v=1701466136",
+  },
   {
     title: "Interstellar",
     year: "2014",
@@ -165,7 +167,7 @@ const movies = [
     year: "2016",
     genre: "Sci-Fi",
     description:
-      "When mysterious spacecraft touch down across the globe, an elite team, led by expert linguist Louise Banks, is brought together to investigate. As mankind teeters on the verge of global war, Banks and the team race against time for answers – and to find them, she will take a chance that could threaten her life, and quite possibly humanity.",
+      "When mysterious spacecraft touch down across the globe, an elite team, led by expert linguist Louise Banks, is brought together to investigate.",
     director: "Denis Villeneuve",
     rating: "7.9",
     duration: "1h 56m",
@@ -240,7 +242,7 @@ const movies = [
     year: "1987",
     genre: "Fantasy",
     description:
-      "While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.",
+      "While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies.",
     director: "Rob Reiner",
     rating: "8.1",
     duration: "1h 38m",
@@ -254,7 +256,7 @@ const movies = [
     year: "1993",
     genre: "Historical",
     description:
-      "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+      "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce.",
     director: "Steven Spielberg",
     rating: "8.9",
     duration: "3h 15m",

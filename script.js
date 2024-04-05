@@ -44,7 +44,7 @@ $(".card").hover(function () {
 $(".card").on("mouseleave", function () {
   $(this).find(".details-hover").stop().fadeOut(300);
 });
-//~~~~~~~~~~end of display movies
+//~~~~~~~~~~end display movies
 
 //~~~~~~~~~~~~~~~~~~~~Fetch a  quote
 // I used a different api, the one that was provided was blocking my requests by CORS policy
@@ -70,4 +70,4 @@ const fetchAndDisplayQuote = async () => {
 };
 
 fetchAndDisplayQuote();
-//~~~~~~~~~~~~~~~End of fetch quote
+//~~~~~~~~~~~~~~~end fetch quote
