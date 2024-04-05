@@ -97,6 +97,34 @@ body {
   font-weight: bold;
 }
 
+/* details modal */
+
+#details-modal .modal-body {
+  padding: 0px;
+}
+
+#details-modal img {
+  width: 100%;
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.4),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+#details-modal .movie-details {
+  position: relative;
+  z-index: 1;
+  margin: 20px;
+  margin-top: -100px;
+}
+
 /* small screen */
 @media (max-width: 770px) {
   .card {
@@ -109,7 +137,7 @@ body {
   .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   .card img {
