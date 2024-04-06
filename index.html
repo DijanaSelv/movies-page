@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -72,51 +73,53 @@
 
       <!-- NEW MOVIE FORM MODAL -->
     <div class="modal modal-form modal-dark" id="add-movie-modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-form">
             <div class="modal-content">
                 <div class="modal-header"><h5>Add a New Movie</h5></div>
                 <div class="modal-body">
-                  <form>
+                  <!-- FORM -->
+                  <form class="new-movie-form">
                     <div class="form-group mb-4">
                       <label for="title">Title*</label>
-                      <input type="text" class="form-control" id="title" placeholder="Enter movie title">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Enter movie title">
                     </div>
                     <div class="input-group input-group-sm mb-3">
                       <div class="input-group-prepend"><span class="input-group-text" >duration</span></div>
-                      <input type="text" class="form-control" id="duration" placeholder="1h 45m">
+                      <input type="text" class="form-control" id="duration" name="duration" placeholder="1h 45m">
                       <div class="input-group-prepend"><span class="input-group-text">year*</span></div>
-                      <input type="number" class="form-control" placeholder="2014">
+                      <input type="number" class="form-control" name="year" id='year' placeholder="2014">
                     </div>
                     <div class="form-group mb-3">
                       <label for="genre">Genre*</label>
-                      <select class="form-select" id="genre">
-                        <option  selected hidden>Choose...</option>
+                      <select class="form-select" id="genre" name="genre">
+                        <option class="default-select" value='' selected disabled>Choose...</option>
                         <option value="Action">Action</option>
                         <option value="Drama">Drama</option>
                         <option value="Sci-Fi">Sci-Fi</option>
                         <option value="Fantasy">Fantasy</option>
                         <option value="Historical">Historical</option>
                         <option value="Documentary">Documentary</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div class="form-group mb-3">
                       <label for="director">Director</label>
-                      <input type="text" class="form-control" id="director">
+                      <input type="text" class="form-control" name="director" id="director">
                     </div>
                     <div class="form-group mb-3">
                       <label for="rating">Rating</label>
-                      <input type="number" class="form-control" id="rating" placeholder="7.8">
+                      <input type="number" class="form-control" id="rating" name="rating" placeholder="7.8">
                     </div>
                     <div class="form-group mb-3">
                       <label for="summary">Summary*</label>
-                      <textarea class="form-control" id="summary" rows='3' placeholder="Write a short summary here..."></textarea>
+                      <textarea class="form-control" id="summary" name="summary" rows='3' placeholder="Write a short summary here..."></textarea>
                     </div>
-                    <div class="input-group input-group-sm mb-3">
+                    <div class="input-group image-group input-group-sm mb-3">
                       <div class="input-group-prepend"><span class="input-group-text" >Image url:</span></div>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="image">
                       
                     </div>
-                    <button class="btn btn-warning">Submit</button>
+                    <button class="btn btn-warning mt-3" type="submit" id="submit-btn">Submit</button>
                   </form>
                 </div>
             </div>
