@@ -125,6 +125,11 @@ body {
   margin-top: -100px;
 }
 
+/* Form */
+.form-group label {
+  padding: 0px 0px 2px 3px;
+}
+
 /* small screen */
 @media (max-width: 770px) {
   .card {
