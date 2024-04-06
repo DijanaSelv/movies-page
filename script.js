@@ -81,7 +81,6 @@ $(".card").on("click", function () {
   //find the selected movie by div id
   const movieIndex = $(this).attr("id");
   const clickedMovie = movies[movieIndex];
-  console.log(clickedMovie);
 
   //set elements for modal body
   const modalBody = `<img src="${clickedMovie.poster}"/>
@@ -97,3 +96,112 @@ $(".card").on("click", function () {
   $("#details-modal .modal-body").append(modalBody);
 });
 // ~~~~~~~~~~~~~~~~~end details modal
+
+// ~~~~~~~~~~~~~~~ form validation
+const currentYear = new Date().getFullYear();
+
+//CUSTOM METHODS
+
+//rating allowed from 1-10 with one decimal.
+jQuery.validator.addMethod(
+  "ratingToTen",
+  function (value, element) {
+    return this.optional(element) || /^(10|[1-9](\.\d)?)$/.test(value);
+  },
+  "Rating can be between 1 and 10 with one decimal allowed."
+);
+
+//director must have first and last name
+jQuery.validator.addMethod(
+  "fullName",
+  function (value, element) {
+    return this.optional(element) || value.split(" ").length >= 2;
+  },
+  "Must include first and last name."
+);
+
+//VALIDATE FORM
+$(".new-movie-form").validate({
+  /* Prevent adding error class to input elements, instead add is-invalid for bootstrap formatting */
+  highlight: function (element, errorClass, validClass) {
+    if (
+      element.tagName === "SELECT" ||
+      element.tagName === "TEXTAREA" ||
+      element.tagName === "INPUT"
+    ) {
+      $(element).addClass("is-invalid").removeClass(validClass);
+    } else {
+      $(element).addClass(errorClass).removeClass(validClass);
+    }
+  },
+  unhighlight: function (element, errorClass, validClass) {
+    if (
+      element.tagName === "SELECT" ||
+      element.tagName === "TEXTAREA" ||
+      element.tagName === "INPUT"
+    ) {
+      $(element).removeClass("is-invalid");
+    } else {
+      $(element).addClass(errorClass).removeClass(validClass);
+    }
+  },
+  rules: {
+    title: {
+      required: true,
+      maxlength: 250,
+    },
+    year: {
+      required: true,
+      range: [1888, +`${currentYear}`],
+    },
+    genre: {
+      required: true,
+    },
+    director: {
+      fullName: true,
+    },
+    rating: {
+      ratingToTen: true,
+    },
+    summary: {
+      required: true,
+      maxlength: 500,
+    },
+    image: {
+      url: true,
+    },
+  },
+  messages: {
+    title: {
+      required: "required",
+      maxlength: jQuery.validator.format("Maximum {0} characters allowed!"),
+    },
+    year: {
+      required: "required",
+      range: "Year is not valid.",
+    },
+    genre: {
+      required: "required",
+    },
+    director: {
+      fullName: "First and Last Name required.",
+    },
+    rating: {
+      ratingToTen: "Rating can be between 1 and 10 with one decimal allowed",
+    },
+    summary: {
+      required: "required",
+      maxlength: "Maximum {0} characters allowed.",
+    },
+    image: {
+      url: "Please enter a vald URL.",
+    },
+  },
+});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~Submit event
+
+$(".new-movie-form").on("submit", function (e) {
+  e.preventDefault();
+  console.log(e.target.genre.value);
+});
