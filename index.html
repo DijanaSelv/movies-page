@@ -76,7 +76,6 @@
                         <option value="Fantasy">Fantasy</option>
                         <option value="Historical">Historical</option>
                         <option value="Documentary">Documentary</option>
-                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div class="form-group mb-3">
@@ -96,7 +95,7 @@
                       <input type="text" class="form-control" name="image">
                       
                     </div>
-                    <button class="btn btn-warning mt-3" type="submit" id="submit-btn">Submit</button>
+                    <button class="btn btn-warning mt-3" type="submit" id="submit-btn">Save</button>
                   </form>
                 </div>
             </div>
@@ -136,44 +135,33 @@
       <div class="text-light filter-label d-none d-md-block" >Filter by Genre:</div>
       <div class="genres-checkboxes row">
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Drama" id="Drama">
+          <input class="form-check-input genre-input" type="checkbox" value="Drama" id="Drama">
           <label class="form-check-label text-light" for="Drama">Drama</label>
         </div>
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Action" id="Action">
+          <input class="form-check-input genre-input" type="checkbox" value="Action" id="Action">
           <label class="form-check-label text-light" for="Action">Action</label>
         </div>
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Sci-Fi" id="Sci-Fi">
+          <input class="form-check-input genre-input" type="checkbox" value="Sci-Fi" id="Sci-Fi">
           <label class="form-check-label text-light" for="Sci-Fi">Sci-Fi</label>
         </div>
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Fantasy" id="Fantasy">
+          <input class="form-check-input genre-input" type="checkbox" value="Fantasy" id="Fantasy">
           <label class="form-check-label text-light" for="Fantasy">Fantasy</label>
         </div>
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Historical" id="Historical">
+          <input class="form-check-input genre-input" type="checkbox" value="Historical" id="Historical">
           <label class="form-check-label text-light" for="Historical">Historical</label>
         </div>
         <div class="form-check col-6 col-md-3 col-lg-2">
-          <input class="form-check-input" type="checkbox" value="Documentary" id="Documentary">
+          <input class="form-check-input genre-input" type="checkbox" value="Documentary" id="Documentary">
           <label class="form-check-label text-light" for="Documentary">Documentary</label>
         </div>
       </div>
     </div>
     <!-- END FILTER -->
-    <!-- <ul  >
-      <li><a>Drama</a></li>
-      <li><a>Action</a></li>
-      <li><a>Sci-Fi</a></li>
-      <li><a>Fantasy</a></li>
-      <li><a>Historical</a></li>
-      <li><a>Documentary</a></li>
-      <li><hr class="dropdown-divider" /></li>
-      <li>
-        <a class="dropdown-item" href="#">All Genres</a>
-      </li>
-    </ul> -->
+    
       <div class="row movies-row g-3 ">
         <!-- Movie cards will be added here -->
         </div>

@@ -11,10 +11,17 @@ function clearInput() {
 //~~~~~~~~~~~display movies from static data
 const moviesToDisplay = [...movies];
 
-function generateMovieCards(moviesArray) {
+function generateMovieCards(moviesArray, filteredGenres) {
   //iterate through all the object in the array
   $(".movies-row").empty();
-  $.each(moviesArray, function (index, movie) {
+
+  //if there are genres selected, filter only those movies
+  const moviesForCards =
+    filteredGenres && filteredGenres.length > 0
+      ? moviesArray.filter((movie) => filteredGenres.includes(movie.genre))
+      : [...moviesArray];
+
+  $.each(moviesForCards, function (index, movie) {
     //create a card for each movie
     const card = `<div class="card"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
     <p class="details-hover">View details</p>
@@ -244,3 +251,14 @@ $(".new-movie-form")
 
 //clear input in modal when it closes
 $(".modal-form").on("hidden.bs.modal", clearInput);
+
+//Filter movies by genre
+$(".genre-input").on("change", function () {
+  const selectedGenres = $(".genre-input:checked")
+    .map(function () {
+      return $(this).val();
+    })
+    .get();
+
+  generateMovieCards(moviesToDisplay, selectedGenres);
+});
