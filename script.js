@@ -19,7 +19,9 @@ function generateMovieCards(moviesArray, filteredGenres) {
   //if there are genres selected, filter only those movies
   moviesForCards =
     filteredGenres && filteredGenres.length > 0
-      ? moviesArray.filter((movie) => filteredGenres.includes(movie.genre))
+      ? $.grep(moviesArray, function (movie) {
+          return filteredGenres.includes(movie.genre);
+        })
       : [...moviesArray];
 
   $.each(moviesForCards, function (index, movie) {
