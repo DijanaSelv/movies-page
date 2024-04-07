@@ -225,7 +225,7 @@ label.error {
   left: 3px;
 }
 
-/* modals animation */
+/* modals */
 
 @keyframes modalFadeIn {
   from {
@@ -242,6 +242,9 @@ label.error {
   animation: modalFadeIn 0.3s ease;
 }
 
+.modal-header {
+  display: none;
+}
 /* small screen */
 @media (max-width: 770px) {
   .card {
@@ -277,5 +280,13 @@ label.error {
   }
   .div-quote > p {
     width: 80%;
+  }
+
+  .modal-header {
+    display: block;
+  }
+
+  .btn-close {
+    margin-left: 0px !important;
   }
 }

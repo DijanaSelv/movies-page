@@ -34,7 +34,11 @@
     <div class="modal modal-form modal-dark" id="add-movie-modal">
         <div class="modal-dialog modal-form">
             <div class="modal-content">
-                <div class="modal-header"><h5>Add a New Movie</h5></div>
+              <div class="modal-header d-flex justify-content-between">
+                <h5>Add a New Movie</h5>
+                <button type="button" class="btn-close close-modal" data-bs-dismiss="modal" data-bs-target="#add-movie-modal" aria-label="Close"></button>
+              </div>
+                
                 <div class="modal-body">
                   <!-- FORM -->
                   <form class="new-movie-form">
@@ -91,9 +95,13 @@
     <!-- MOVIE DETAILS MODAL -->
     <div class="modal" id="details-modal" >
       <div class="modal-dialog modal-md">
-          <div class="modal-content bg-dark text-light">
-              <div class="modal-body">
-                <!-- will be populated on click -->
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">  
+            <button type="button" class="btn-close close-modal btn-close-white" data-bs-dismiss="modal" data-bs-target="#details-modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  
+              <!-- will be populated on click -->
               </div>
           </div>
       </div>
