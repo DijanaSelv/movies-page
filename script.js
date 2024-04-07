@@ -31,7 +31,6 @@ function generateMovieCards(moviesArray, filteredGenres) {
       .toLowerCase()
       .localeCompare(b.title.replace("The ", "").toLowerCase());
   });
-  console.log(moviesForCards);
 
   $.each(moviesForCards, function (index, movie) {
     //create a card for each movie
@@ -110,10 +109,13 @@ $(".movies-row").on("click", ".card", function () {
   const movieIndex = $(this).attr("id");
   const clickedMovie = moviesForCards[movieIndex];
 
+  //display duration "xh xxm" format
+  const duration = clickedMovie.duration.split(":").join("h ").concat("m");
+
   //set elements for modal body
   const modalBody = `<img src="${clickedMovie.poster}"/>
   <div class='movie-details'><h2>${clickedMovie.title}</h2>
-  <p>${clickedMovie.duration} / ${clickedMovie.genre} / ${clickedMovie.year}</p>
+  <p>${duration} / ${clickedMovie.genre} / ${clickedMovie.year}</p>
   <span>SUMMARY</span>
   <p>${clickedMovie.description}</p>
   <p>Director: ${clickedMovie.director}</p>
@@ -148,6 +150,8 @@ jQuery.validator.addMethod(
   },
   "Must include first and last name."
 );
+
+//empty string not allowed
 jQuery.validator.addMethod(
   "notemptystring",
   function (value, element) {
@@ -156,11 +160,21 @@ jQuery.validator.addMethod(
   "requred"
 );
 
+//duration validation
+jQuery.validator.addMethod(
+  "duration",
+  function (value, element) {
+    return (
+      this.optional(element) || /^(([0-9]|[1-9][0-9])):[0-5][0-9]$/.test(value)
+    );
+  },
+  "Incorrect format (ex. 1:45)"
+);
+
 //submit click event
 $(".new-movie-form")
   .submit(function (e) {
     e.preventDefault();
-    console.log("submitting");
   })
   .validate({
     /* Prevent adding default error class to input elements, instead add is-invalid for bootstrap formatting */
@@ -211,6 +225,9 @@ $(".new-movie-form")
       image: {
         url: true,
       },
+      duration: {
+        duration: true,
+      },
     },
     messages: {
       title: {
@@ -236,6 +253,9 @@ $(".new-movie-form")
       },
       image: {
         url: "Please enter a vald URL.",
+      },
+      duration: {
+        duration: "Incorrect format (ex. 1:45).",
       },
     },
 
