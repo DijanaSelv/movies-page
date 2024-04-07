@@ -24,6 +24,15 @@ function generateMovieCards(moviesArray, filteredGenres) {
         })
       : [...moviesArray];
 
+  //sort alphabetically
+  moviesForCards.sort(function (a, b) {
+    return a.title
+      .replace("The ", "")
+      .toLowerCase()
+      .localeCompare(b.title.replace("The ", "").toLowerCase());
+  });
+  console.log(moviesForCards);
+
   $.each(moviesForCards, function (index, movie) {
     //create a card for each movie
     const card = `<div class="card"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
