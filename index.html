@@ -17,30 +17,12 @@
   <body>
 
   <!-- NAV BAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container">
+    <nav class="navbar navbar-dark ">
+      <div class="container d-flex">
         <a class="navbar-brand" href="#">MovieRizz</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-
-
-          </ul>
-        </div>
         <button class="btn btn-dark add-movie-btn" data-bs-toggle="modal" data-bs-target="#add-movie-modal">+ Add Movie</button>
+        </div>
+        
       </div>
     </nav>
     <!-- END NAV BAR -->
@@ -60,12 +42,15 @@
                       <label for="title">Title*</label>
                       <input type="text" class="form-control" id="title" name="title" placeholder="Enter movie title">
                     </div>
-                    <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend"><span class="input-group-text" >duration</span></div>
+                    <div class=" small-inputs d-flex justify-content-between "><div class="form-group mb-3">
+                      <label for="title">Duration:</label>
                       <input type="text" class="form-control" id="duration" name="duration" placeholder="1h 45m">
-                      <div class="input-group-prepend"><span class="input-group-text">year*</span></div>
-                      <input type="number" class="form-control" name="year" id='year' placeholder="2014">
                     </div>
+                    <div class="form-group mb-3">
+                      <label for="title">Year:</label>
+                      <input type="number" class="form-control" name="year" id='year' placeholder="2014"></div></div>
+                    
+
                     <div class="form-group mb-3">
                       <label for="genre">Genre*</label>
                       <select class="form-select" id="genre" name="genre">
