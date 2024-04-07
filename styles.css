@@ -285,8 +285,4 @@ label.error {
   .modal-header {
     display: block;
   }
-
-  .btn-close {
-    margin-left: 0px !important;
-  }
 }
