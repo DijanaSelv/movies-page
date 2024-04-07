@@ -19,8 +19,19 @@ function generateMovieCards(moviesArray, filteredGenres) {
   //if there are genres selected, filter only those movies
   moviesForCards =
     filteredGenres && filteredGenres.length > 0
-      ? moviesArray.filter((movie) => filteredGenres.includes(movie.genre))
+      ? $.grep(moviesArray, function (movie) {
+          return filteredGenres.includes(movie.genre);
+        })
       : [...moviesArray];
+
+  //sort alphabetically
+  moviesForCards.sort(function (a, b) {
+    return a.title
+      .replace("The ", "")
+      .toLowerCase()
+      .localeCompare(b.title.replace("The ", "").toLowerCase());
+  });
+  console.log(moviesForCards);
 
   $.each(moviesForCards, function (index, movie) {
     //create a card for each movie
