@@ -10,13 +10,14 @@ function clearInput() {
 
 //~~~~~~~~~~~display movies from static data
 const moviesToDisplay = [...movies];
+let moviesForCards;
 
 function generateMovieCards(moviesArray, filteredGenres) {
   //iterate through all the object in the array
   $(".movies-row").empty();
 
   //if there are genres selected, filter only those movies
-  const moviesForCards =
+  moviesForCards =
     filteredGenres && filteredGenres.length > 0
       ? moviesArray.filter((movie) => filteredGenres.includes(movie.genre))
       : [...moviesArray];
@@ -96,7 +97,7 @@ $(".movies-row").on("click", ".card", function () {
 
   //find the selected movie by div id
   const movieIndex = $(this).attr("id");
-  const clickedMovie = moviesToDisplay[movieIndex];
+  const clickedMovie = moviesForCards[movieIndex];
 
   //set elements for modal body
   const modalBody = `<img src="${clickedMovie.poster}"/>
