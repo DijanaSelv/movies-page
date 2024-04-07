@@ -35,7 +35,7 @@ function generateMovieCards(moviesArray, filteredGenres) {
   $.each(moviesForCards, function (index, movie) {
     //create a card for each movie
     const card = `<div class="card"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
-    <p class="details-hover">View details</p>
+    <p class="details-hover">Click for more</p>
       <img
         src="${
           movie.poster
@@ -71,6 +71,7 @@ $(".card").hover(function () {
 $(".card").on("mouseleave", function () {
   $(this).find(".details-hover").stop().fadeOut(300);
 });
+
 //~~~~~~~~~~end display movies
 
 //~~~~~~~~~~~~~~~~~~~~Fetch a  quote
@@ -116,11 +117,12 @@ $(".movies-row").on("click", ".card", function () {
   const modalBody = `<img src="${clickedMovie.poster}"/>
   <div class='movie-details'><h2>${clickedMovie.title}</h2>
   <p>${duration} / ${clickedMovie.genre} / ${clickedMovie.year}</p>
-  <span>SUMMARY</span>
-  <p>${clickedMovie.description}</p>
-  <p>Director: ${clickedMovie.director}</p>
-  <p>Rating: ${clickedMovie.rating}</p>
-  `;
+  <span class='details-label'>SUMMARY</span>
+  <p class='summary'>${clickedMovie.description}</p>
+  <div class='row text-light'>
+  <div class="col-3 details-label">Director:</div> <div class="col-9">${clickedMovie.director}</div>
+  <div class="col-3 details-label">Rating:</div> <div class="col-9">${clickedMovie.rating}</div>
+  </div>`;
 
   //add to DOM
   $("#details-modal .modal-body").append(modalBody);
@@ -202,6 +204,7 @@ $(".new-movie-form")
     },
     rules: {
       title: {
+        required: true,
         notemptystring: true,
         maxlength: 250,
       },
@@ -219,6 +222,7 @@ $(".new-movie-form")
         ratingToTen: true,
       },
       summary: {
+        required: true,
         notemptystring: true,
         maxlength: 500,
       },
@@ -231,6 +235,7 @@ $(".new-movie-form")
     },
     messages: {
       title: {
+        required: "required",
         notemptystring: "required",
         maxlength: jQuery.validator.format("Maximum {0} characters allowed!"),
       },
@@ -248,6 +253,7 @@ $(".new-movie-form")
         ratingToTen: "Rating can be between 1 and 10 with one decimal allowed",
       },
       summary: {
+        required: "required",
         notemptystring: "required",
         maxlength: "Maximum {0} characters allowed.",
       },
