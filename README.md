@@ -12,10 +12,10 @@ The page has a responsive design that adapts layout to small screens.
 To run this project locally you need to:
 
 1. Clone this repository to your local machine:
-   git clone https://github.com/DijanaSelv/movies-page.git
+   " git clone https://github.com/DijanaSelv/movies-page.git "
 
 2. Navigate to project directory
-3. cd movies-page
+  " cd movies-page "
 
 4. There are no dependencies to be installed
 
