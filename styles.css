@@ -277,6 +277,6 @@ label.error {
   }
 
   .modal-header {
-    display: block;
+    display: flex;
   }
 }

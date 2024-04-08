@@ -1,4 +1,11 @@
+//get movies file and locally stored movies if any
 import movies from "./movesStatic.js";
+let storedMovies = [];
+const storedMoviesJSON = localStorage.getItem("movies");
+
+if (storedMoviesJSON) {
+  storedMovies = JSON.parse(storedMoviesJSON);
+}
 
 function clearInput() {
   $(".modal-form .form-control").val("");
@@ -8,8 +15,9 @@ function clearInput() {
   $(".modal-form .error").remove();
 }
 
-//~~~~~~~~~~~display movies from static data
-const moviesToDisplay = [...movies];
+//~~~~~~~~~~~display movies from static data and local storage if any
+const moviesToDisplay = [...movies, ...storedMovies];
+
 let moviesForCards;
 
 function generateMovieCards(moviesArray, filteredGenres) {
@@ -98,7 +106,7 @@ const fetchAndDisplayQuote = async () => {
     },
     success: function (response) {
       $(".loading-quote").remove();
-      $(".p-quote").text(`"${response[0].quote}"`);
+      $(".p-quote").text(`"${response[0].quote.slice(0, 500)}"`);
       $(".p-author").text(response[0].author);
     },
     error: function ajaxError(jqXHR) {
@@ -124,17 +132,26 @@ $(".movies-row").on("click", ".card", function () {
   const clickedMovie = moviesForCards[movieIndex];
 
   //display duration "xh xxm" format
-  const duration = clickedMovie.duration.split(":").join("h ").concat("m");
+
+  const duration = clickedMovie.duration
+    ? clickedMovie.duration.split(":").join("h ").concat("m")
+    : undefined;
 
   //set elements for modal body
   const modalBody = `<img src="${clickedMovie.poster}"/>
   <div class='movie-details'><h2>${clickedMovie.title}</h2>
-  <p>${duration} / ${clickedMovie.genre} / ${clickedMovie.year}</p>
+  <p>${duration ? duration + "/" : ""}  ${clickedMovie.genre} / ${
+    clickedMovie.year
+  }</p>
   <span class='details-label'>SUMMARY</span>
   <p class='summary'>${clickedMovie.description}</p>
   <div class='row text-light'>
-  <div class="col-3 details-label">Director:</div> <div class="col-9">${clickedMovie.director}</div>
-  <div class="col-3 details-label">Rating:</div> <div class="col-9">${clickedMovie.rating}</div>
+  <div class="col-3 details-label">Director:</div> <div class="col-9">${
+    clickedMovie.director ? clickedMovie.director : "N/A"
+  }</div>
+  <div class="col-3 details-label">Rating:</div> <div class="col-9">${
+    clickedMovie.rating ? clickedMovie.rating : "N/A"
+  }</div>
   </div>`;
 
   //add to DOM
@@ -294,6 +311,10 @@ $(".new-movie-form")
           "https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg",
       };
       moviesToDisplay.push(newMovie);
+
+      //add movie into local storage
+      storedMovies.push(newMovie);
+      localStorage.setItem("movies", JSON.stringify(storedMovies));
       generateMovieCards(moviesToDisplay);
       $("#add-movie-modal").modal("toggle");
       clearInput();
