@@ -129,6 +129,10 @@ body {
 
 /* details modal */
 
+.modal-dialog {
+  margin-top: 13vh;
+}
+
 #details-modal .modal-body {
   padding: 0px;
 }
