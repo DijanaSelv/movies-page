@@ -312,7 +312,7 @@ $(".new-movie-form")
       };
       moviesToDisplay.push(newMovie);
 
-      //add movie into local storage
+      //add movie intogit add  local storage
       storedMovies.push(newMovie);
       localStorage.setItem("movies", JSON.stringify(storedMovies));
       generateMovieCards(moviesToDisplay);
