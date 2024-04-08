@@ -62,11 +62,11 @@ body {
 
 .card-body {
   display: flex;
-  padding-top: 14px;
-  height: 50px;
+  padding-top: 15px;
   flex-direction: column;
   overflow: hidden;
-  transition: height 0.7s ease-out;
+  /* height: 50px; */
+  /* transition: height 0.7s ease-out; */
 }
 
 .details-hover {
@@ -89,20 +89,13 @@ body {
 }
 
 .card img {
-  height: auto;
+  height: 92%;
   object-fit: cover;
   overflow: hidden;
 }
 
 .card:hover {
-  opacity: 1;
-  transition: all 0.4s;
   cursor: pointer;
-}
-
-.card:hover .card-body {
-  height: 400px;
-  transition: height 0.7s ease-in;
 }
 
 /* quote */
@@ -258,7 +251,8 @@ label.error {
   .card-body,
   .card:hover .card-body {
     display: flex;
-    height: auto;
+    /* stop hover event from happening on small screen */
+    height: auto !important;
     flex-direction: column;
     justify-content: space-evenly;
   }

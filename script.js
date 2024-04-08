@@ -32,7 +32,13 @@ function generateMovieCards(moviesArray, filteredGenres) {
       .localeCompare(b.title.replace("The ", "").toLowerCase());
   });
 
+  //if secription is long, display only some in card
   $.each(moviesForCards, function (index, movie) {
+    const description =
+      movie.description.length > 200
+        ? movie.description.slice(0, 200).concat("...")
+        : movie.description;
+
     //create a card for each movie
     const card = `<div class="card"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
     <p class="details-hover">Click for more</p>
@@ -45,14 +51,13 @@ function generateMovieCards(moviesArray, filteredGenres) {
         class="card-img-top"
         alt="movie poster"
       />
-      <div class="card-body">
-        
+      <div class="card-body" style="height: 50px;">
         <div class="d-flex justify-content-between"><h5 class="card-title">${
           movie.title
         }</h5><span>${movie.year}</span></div>
         <span>${movie.genre}</span>
         <p class="card-text">
-          ${movie.description}
+          ${description}
         </p>
       </div>
     </div>`;
@@ -64,11 +69,19 @@ function generateMovieCards(moviesArray, filteredGenres) {
 generateMovieCards(moviesToDisplay);
 
 //styling on hover for cards
-$(".card").hover(function () {
+$(".movies-row").on("mouseenter", ".card", function () {
+  $(this).find(".card-body").css({
+    height: "400px",
+    transition: "height 0.7s ease-in",
+  });
   $(this).find(".details-hover").stop().fadeIn(500);
 });
 
-$(".card").on("mouseleave", function () {
+$(".movies-row").on("mouseleave", ".card", function () {
+  $(this).find(".card-body").css({
+    height: "50px",
+    transition: "height 0.7s ease-out",
+  });
   $(this).find(".details-hover").stop().fadeOut(300);
 });
 
