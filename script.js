@@ -21,9 +21,9 @@ const moviesToDisplay = [...movies, ...storedMovies];
 let moviesForCards;
 
 function generateMovieCards(moviesArray, filteredGenres) {
-  //iterate through all the object in the array
   $(".movies-row").empty();
 
+  //iterate through all the object in the array
   //if there are genres selected, filter only those movies
   moviesForCards =
     filteredGenres && filteredGenres.length > 0
@@ -40,7 +40,7 @@ function generateMovieCards(moviesArray, filteredGenres) {
       .localeCompare(b.title.replace("The ", "").toLowerCase());
   });
 
-  //if secription is long, display only some in card
+  //if description is long, display only part in card
   $.each(moviesForCards, function (index, movie) {
     const description =
       movie.description.length > 200
@@ -122,7 +122,6 @@ fetchAndDisplayQuote();
 //~~~~~~~~~~~~~~~end fetch quote
 
 // ~~~~~~~~~~~~~~~~~open and populate details modal on click
-
 $(".movies-row").on("click", ".card", function () {
   //empty previously populated modal
   $("#details-modal .modal-body").empty();
@@ -132,7 +131,6 @@ $(".movies-row").on("click", ".card", function () {
   const clickedMovie = moviesForCards[movieIndex];
 
   //display duration "xh xxm" format
-
   const duration = clickedMovie.duration
     ? clickedMovie.duration.split(":").join("h ").concat("m")
     : undefined;
@@ -140,7 +138,7 @@ $(".movies-row").on("click", ".card", function () {
   //set elements for modal body
   const modalBody = `<img src="${clickedMovie.poster}"/>
   <div class='movie-details'><h2>${clickedMovie.title}</h2>
-  <p>${duration ? duration + "/" : ""}  ${clickedMovie.genre} / ${
+  <p>${duration ? duration + " /" : ""}  ${clickedMovie.genre} / ${
     clickedMovie.year
   }</p>
   <span class='details-label'>SUMMARY</span>
@@ -174,7 +172,7 @@ jQuery.validator.addMethod(
   "Rating can be between 1 and 10 with one decimal allowed."
 );
 
-//director must have first and last name
+//director must have first and last name (at least)
 jQuery.validator.addMethod(
   "fullName",
   function (value, element) {
@@ -310,12 +308,17 @@ $(".new-movie-form")
           form.image.value ||
           "https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg",
       };
-      moviesToDisplay.push(newMovie);
 
-      //add movie intogit add  local storage
+      //add movie
+      //in local storage together with previously stored movies
       storedMovies.push(newMovie);
       localStorage.setItem("movies", JSON.stringify(storedMovies));
+
+      //rerender shown movie posters
+      moviesToDisplay.push(newMovie);
       generateMovieCards(moviesToDisplay);
+
+      //close the modal on successful submit and clear input
       $("#add-movie-modal").modal("toggle");
       clearInput();
     },
