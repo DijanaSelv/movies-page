@@ -97,7 +97,7 @@ $(".movies-row").on("mouseleave", ".card", function () {
 
 //~~~~~~~~~~~~~~~~~~~~Fetch a  quote
 // I used a different api, the one that was provided was blocking my requests by CORS policy
-const fetchAndDisplayQuote = async () => {
+const fetchAndDisplayQuote = () => {
   $.ajax({
     url: "https://api.api-ninjas.com/v1/quotes?category=movies",
     method: "GET",
