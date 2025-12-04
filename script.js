@@ -80,7 +80,7 @@ generateMovieCards(moviesToDisplay);
 $(".movies-row").on("mouseenter", ".card", function () {
   $(this).find(".card-body").css({
     height: "400px",
-    transition: "height 0.7s ease-in",
+    transition: "height 0.2s ease-in",
   });
   $(this).find(".details-hover").stop().fadeIn(500);
 });
@@ -88,7 +88,7 @@ $(".movies-row").on("mouseenter", ".card", function () {
 $(".movies-row").on("mouseleave", ".card", function () {
   $(this).find(".card-body").css({
     height: "50px",
-    transition: "height 0.7s ease-out",
+    transition: "height 0.2s ease-out",
   });
   $(this).find(".details-hover").stop().fadeOut(300);
 });
