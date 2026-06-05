@@ -73,7 +73,7 @@ function generateMovieCards(moviesArray, filteredGenres) {
       </div>
     </div>
     </div>`;
-    ``;
+
     //add the card to the DOM
     $(".movies-row").append(card);
   });
