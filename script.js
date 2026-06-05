@@ -48,26 +48,30 @@ function generateMovieCards(moviesArray, filteredGenres) {
         : movie.description;
 
     //create a card for each movie
-    const card = `<div class="card"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
-    <p class="details-hover">Click for more</p>
+    const card = `
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 "> 
+    <div class="card position-relative"  id='${index}' data-bs-toggle="modal" data-bs-target="#details-modal">
+    <p class="details-hover">Click for more</p> 
       <img
         src="${
           movie.poster
             ? movie.poster
             : "https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg"
         }"
-        class="card-img-top"
+        class="card-img-top w-100 h-100 object-fit-cover "
         alt="movie poster"
       />
-      <div class="card-body" style="height: 50px;">
-        <div class="d-flex justify-content-between"><h5 class="card-title">${
-          movie.title
-        }</h5><span>${movie.year}</span></div>
-        <span>${movie.genre}</span>
-        <p class="card-text">
-          ${description}
-        </p>
+      <div class="card-body " >
+        <div class="d-flex justify-content-between alight-items-center">
+          <h5 class="card-title">${movie.title}</h5>
+          <span>${movie.year}</span>
+        </div>
+        <div class="card-body-details"> 
+          <span class="card-genre">${movie.genre}</span>
+          <p class="card-text">${description}</p>
+        </div>
       </div>
+    </div>
     </div>`;
 
     //add the card to the DOM
@@ -75,23 +79,6 @@ function generateMovieCards(moviesArray, filteredGenres) {
   });
 }
 generateMovieCards(moviesToDisplay);
-
-//styling on hover for cards
-$(".movies-row").on("mouseenter", ".card", function () {
-  $(this).find(".card-body").css({
-    height: "400px",
-    transition: "height 0.7s ease-in",
-  });
-  $(this).find(".details-hover").stop().fadeIn(500);
-});
-
-$(".movies-row").on("mouseleave", ".card", function () {
-  $(this).find(".card-body").css({
-    height: "50px",
-    transition: "height 0.7s ease-out",
-  });
-  $(this).find(".details-hover").stop().fadeOut(300);
-});
 
 //~~~~~~~~~~end display movies
 
@@ -136,7 +123,9 @@ $(".movies-row").on("click", ".card", function () {
     : undefined;
 
   //set elements for modal body
-  const modalBody = `<img src="${clickedMovie.poster}"/>
+  const modalBody = `
+  <img src="${clickedMovie.poster}"/>
+
   <div class='movie-details'><h2>${clickedMovie.title}</h2>
   <p>${duration ? duration + " /" : ""}  ${clickedMovie.genre} / ${
     clickedMovie.year
@@ -169,7 +158,7 @@ jQuery.validator.addMethod(
   function (value, element) {
     return this.optional(element) || /^(10|[1-9](\.\d)?)$/.test(value);
   },
-  "Rating can be between 1 and 10 with one decimal allowed."
+  "Rating can be between 1 and 10 with one decimal allowed.",
 );
 
 //director must have first and last name (at least)
@@ -178,7 +167,7 @@ jQuery.validator.addMethod(
   function (value, element) {
     return this.optional(element) || value.split(" ").length >= 2;
   },
-  "Must include first and last name."
+  "Must include first and last name.",
 );
 
 //empty string not allowed
@@ -187,7 +176,7 @@ jQuery.validator.addMethod(
   function (value, element) {
     return this.optional(element) || value.trim() !== "";
   },
-  "requred"
+  "requred",
 );
 
 //duration validation
@@ -198,7 +187,7 @@ jQuery.validator.addMethod(
       this.optional(element) || /^(([0-9]|[1-9][0-9])):[0-5][0-9]$/.test(value)
     );
   },
-  "Incorrect format (ex. 1:45)"
+  "Incorrect format (ex. 1:45)",
 );
 
 //submit click event
