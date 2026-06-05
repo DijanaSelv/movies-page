@@ -73,7 +73,7 @@ function generateMovieCards(moviesArray, filteredGenres) {
       </div>
     </div>
     </div>`;
-
+    ``;
     //add the card to the DOM
     $(".movies-row").append(card);
   });
@@ -86,7 +86,7 @@ generateMovieCards(moviesToDisplay);
 // I used a different api, the one that was provided was blocking my requests by CORS policy
 const fetchAndDisplayQuote = () => {
   $.ajax({
-    url: "https://api.api-ninjas.com/v1/quotes?category=movies",
+    url: "https://api.api-ninjas.com/v1/quotes?category",
     method: "GET",
     headers: {
       "X-Api-Key": "PRK9olZJhAIuT3D0EBMHMw==RYszKLP564lXJeLe",
